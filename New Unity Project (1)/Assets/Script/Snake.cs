@@ -8,15 +8,15 @@ public class Snake : MonoBehaviour
 
     private Vector2 _direction = Vector2.right;
 
-    private List<Transform> _segments;
+    private List<Transform> _segments = new List<Transform>();
 
     public Transform segmentPrefab;
+    public int instailsize = 4;
 
 
     private void Start()
     {
-        _segments = new List<Transform>();
-        _segments.Add(this.transform);
+        ResetState();
     }
 
 
@@ -74,6 +74,12 @@ public class Snake : MonoBehaviour
         _segments.Clear();
         _segments.Add(this.transform);
         this.transform.position = Vector3.zero;
+        //intal state 4 
+
+        for( int i=1;i< instailsize; i++)
+        {
+            _segments.Add(Instantiate(this.segmentPrefab));
+        }
         
     }
 
